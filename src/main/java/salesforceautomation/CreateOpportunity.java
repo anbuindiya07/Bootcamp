@@ -1,32 +1,35 @@
 package salesforceautomation;
 
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-public class CreateOpportunity {
+public class CreateOpportunity extends baseclass {
 	
-	
-	public static void main (String[] args) throws InterruptedException
+	@Test(dataProvider="fetchData",retryAnalyzer=RetryFailedTestcases.class)
+	public void createopp (String Oppname) throws InterruptedException
 	
 	{
-		WebDriverManager.chromedriver().setup();
-		ChromeDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://login.salesforce.com/");
-		driver.findElementByXPath("//input[@id='username']").sendKeys("cypress@testleaf.com");
-		driver.findElementByXPath("//input[@type='password']").sendKeys("Selbootcamp@123");
-		driver.findElementByXPath("//input[@type='submit']").click();
-		Thread.sleep(30000);
-
-		//driver.findElementByXPath("//*[@class='slds-icon slds-icon_x-small']").click();
-		driver.findElementByXPath("//*[@class='slds-icon-waffle']").click();
+		
+//		WebDriverManager.chromedriver().setup();
+//		driver = new ChromeDriver();
+//		driver.manage().window().maximize();
+//		driver.get("https://login.salesforce.com/");
+//		driver.findElementByXPath("//input[@id='username']").sendKeys("cypress@testleaf.com");
+//		driver.findElementByXPath("//input[@type='password']").sendKeys("Selbootcamp@123");
+//		driver.findElementByXPath("//input[@type='submit']").click();
+//		Thread.sleep(30000);
+//
+//		//driver.findElementByXPath("//*[@class='slds-icon slds-icon_x-small']").click();
+//		driver.findElementByXPath("//*[@class='slds-icon-waffle']").click();
 		Thread.sleep(30000);
 		driver.findElementByXPath("//button[text()='View All' and @class='slds-button']").click();
 		Thread.sleep(30000);
@@ -38,7 +41,7 @@ public class CreateOpportunity {
 		driver.findElementByXPath("//a[@title='New']").click();
 		Thread.sleep(30000);
 		WebElement oppname1= driver.findElementByXPath("(//label[text()='Opportunity Name']/following::div[1]/input)");
-		oppname1.sendKeys("Salesforce Automation by Anbukarasi");
+		oppname1.sendKeys(Oppname);
 		
 		String opprtunityname=	driver.findElementByXPath("(//label[text()='Opportunity Name']/following::div[1]/input)").getAttribute("value").toString();
 					
@@ -66,14 +69,19 @@ public class CreateOpportunity {
 			String output = message.getText();
 			String[] split = output.split(" ");
 			System.out.println("The "+split[0]+split[1]+ split[2]+split[3]+" successfully");
-		    
-				
+			
+			
 	}
 
-	private static void close() {
-		// TODO Auto-generated method stub
+	@DataProvider(name="fetchData")
+	public String [][] sendData() throws InterruptedException, IOException 
+	
+	{
+		ReadExcel re = new ReadExcel();
+		String[][] data = re.excelRead();
+		return data;
 		
 	}
-	
+	}
 
-}
+

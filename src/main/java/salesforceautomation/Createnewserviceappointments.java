@@ -96,6 +96,8 @@ public class Createnewserviceappointments {
 //			    cuurenttime.clear();
 //				cuurenttime.click();
 //		    	cuurenttime.sendKeys(dateString);
+				
+				
 		    	    	
 		//15) Select 5+ days from Today's date as Due Date
 				

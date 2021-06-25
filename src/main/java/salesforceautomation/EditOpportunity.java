@@ -7,43 +7,41 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-public class EditOpportunity {
+public class EditOpportunity extends baseclass {
 	
-	
-	public static void main (String[] args) throws InterruptedException
+	@Test
+	public  void Editopp () throws InterruptedException
 	{
 	
-	WebDriverManager.chromedriver().setup();
-	ChromeDriver driver = new ChromeDriver();
-	driver.manage().window().maximize();
-	
-	//1.Login to https://login.salesforce.com
-		driver.get("https://login.salesforce.com/");
-		driver.findElementByXPath("//input[@id='username']").sendKeys("cypress@testleaf.com");
-		driver.findElementByXPath("//input[@type='password']").sendKeys("Selbootcamp@123");
-		driver.findElementByXPath("//input[@type='submit']").click();
-		Thread.sleep(30000);
-
-	//2. Click on toggle menu button from the left corner
-		driver.findElementByXPath("//*[@class='slds-icon-waffle']").click();
-		Thread.sleep(30000);
-	
-	//3. Click view All and click Sales from App Launcher
-		driver.findElementByXPath("//button[text()='View All' and @class='slds-button']").click();
-		Thread.sleep(30000);
-		driver.findElementByXPath("//p[contains(text(),'Manage your sales')]").click();
-		Thread.sleep(30000);
-	
-	//4. Click on Opportunity tab 
-		driver.executeScript("arguments[0].click()", driver.findElementByXPath("//a[@title='Opportunities']/span"));
-		Thread.sleep(30000);
-		
+//	WebDriverManager.chromedriver().setup();
+//	 driver = new ChromeDriver();
+//	driver.manage().window().maximize();
+//	
+//	//1.Login to https://login.salesforce.com
+//		driver.get("https://login.salesforce.com/");
+//		driver.findElementByXPath("//input[@id='username']").sendKeys("cypress@testleaf.com");
+//		driver.findElementByXPath("//input[@type='password']").sendKeys("Selbootcamp@123");
+//		driver.findElementByXPath("//input[@type='submit']").click();
+//		Thread.sleep(30000);
+//
+//	//2. Click on toggle menu button from the left corner
+//		driver.findElementByXPath("//*[@class='slds-icon-waffle']").click();
+//		Thread.sleep(30000);
+//	
+//	//3. Click view All and click Sales from App Launcher
+//		driver.findElementByXPath("//button[text()='View All' and @class='slds-button']").click();
+//		Thread.sleep(30000);
+//		driver.findElementByXPath("//p[contains(text(),'Manage your sales')]").click();
+//		Thread.sleep(30000);
+//	
+//	//4. Click on Opportunity tab 
+//		driver.executeScript("arguments[0].click()", driver.findElementByXPath("//a[@title='Opportunities']/span"));
+//		Thread.sleep(30000);
+//		
 	//5. Search the Opportunity 'Salesforce Automation by Your Name'
 	
 		WebElement objentername= driver.findElementByXPath("(//input[@type='text'])[2]");
