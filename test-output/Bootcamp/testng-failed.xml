@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Bootcamp]">
+  <parameter name="password" value="Selbootcamp@123"/>
+  <parameter name="url" value="https://login.salesforce.com/"/>
+  <parameter name="username" value="cypress@testleaf.com"/>
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="salesforceautomation.CreateFollowUpEvent">
+        <methods>
+          <include name="createopp"/>
+          <include name="Navigatetoopportunities"/>
+          <include name="Closesalesfore"/>
+        </methods>
+      </class> <!-- salesforceautomation.CreateFollowUpEvent -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Bootcamp] -->
